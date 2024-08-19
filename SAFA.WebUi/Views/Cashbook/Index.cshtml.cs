@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace SAFA.WebUi.Views.Cashbook;
+namespace Safa.WebUi.Views.Cashbook;
 
 public class Index : PageModel
 {

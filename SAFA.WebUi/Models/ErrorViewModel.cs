@@ -1,4 +1,4 @@
-namespace SAFA.WebUi.Models;
+namespace Safa.WebUi.Models;
 
 public class ErrorViewModel
 {

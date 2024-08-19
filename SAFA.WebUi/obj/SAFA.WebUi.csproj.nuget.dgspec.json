@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\SAFA.WebUi\\SAFA.WebUi.csproj": {}
+    "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\Safa.WebUi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\SAFA.WebUi\\SAFA.WebUi.csproj": {
+    "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\Safa.WebUi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\SAFA.WebUi\\SAFA.WebUi.csproj",
-        "projectName": "SAFA.WebUi",
-        "projectPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\SAFA.WebUi\\SAFA.WebUi.csproj",
+        "projectUniqueName": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\Safa.WebUi.csproj",
+        "projectName": "Safa.WebUi",
+        "projectPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\Safa.WebUi.csproj",
         "packagesPath": "C:\\Users\\tvdnol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\SAFA.WebUi\\obj\\",
+        "outputPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -42,6 +42,28 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

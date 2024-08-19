@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using SAFA.WebUi.Models;
+using Safa.WebUi.Models;
 
-namespace SAFA.WebUi.Controllers;
+namespace Safa.WebUi.Controllers;
 
 public class HomeController : Controller
 {
@@ -13,10 +13,19 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index() =>
-        View();
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    public IActionResult Privacy()
+    {
+        return View();
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error() =>
-         View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
 }
