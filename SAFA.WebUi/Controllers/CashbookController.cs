@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SAFA.WebUi.Controllers;
+namespace SAFA.WebUi;
 
 public class CashbookController : Controller
 {
