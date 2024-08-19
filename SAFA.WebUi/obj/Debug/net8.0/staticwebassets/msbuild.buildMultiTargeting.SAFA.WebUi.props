@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SAFA.WebUi.props" />
+</Project>
