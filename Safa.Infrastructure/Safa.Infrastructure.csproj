@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="LanguageExt.Core" Version="4.4.9" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.8" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.8" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.8" />
@@ -15,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Safa.Application\Safa.Application.csproj" />
       <ProjectReference Include="..\Safa.Domain\Safa.Domain.csproj" />
     </ItemGroup>
 

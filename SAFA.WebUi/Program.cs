@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Safa.Application;
 using Safa.Infrastructure;
+using Safa.Infrastructure.Transactions;
 using Safa.WebUi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,20 +18,22 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 // builder.Services.InstallDatabase(builder.Configuration);
 
-builder.Services
-    .AddAuthentication(options =>
-    {
-        options.DefaultScheme = IdentityConstants.ApplicationScheme;
-        options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-    })
-    .AddGoogle(options =>
-{
-    options.ClientId = builder.Configuration["Authentication:Google:ClientId"]!;
-    options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]!;
-})
-    .AddIdentityCookies();
+// builder.Services
+//     .AddAuthentication(options =>
+//     {
+//         options.DefaultScheme = IdentityConstants.ApplicationScheme;
+//         options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+//     })
+//     .AddGoogle(options =>
+// {
+//     options.ClientId = builder.Configuration["Authentication:Google:ClientId"]!;
+//     options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]!;
+// })
+//     .AddIdentityCookies();
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 
 var app = builder.Build();
 
@@ -48,7 +52,7 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseAuthentication();
+// app.UseAuthentication();
 
 app.UseRouting();
 

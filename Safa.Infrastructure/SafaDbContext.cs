@@ -19,7 +19,8 @@ public class SafaDbContext : IdentityDbContext<UserEntity, IdentityRole<Guid>, G
         builder
             .Entity<UserEntity>()
             .HasMany(x => x.Transactions)
-            .WithOne(x => x.);
+            .WithOne(x => x.UserEntity)
+            .OnDelete(DeleteBehavior.Cascade);
         
         base.OnModelCreating(builder);
     }

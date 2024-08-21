@@ -7,4 +7,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="LanguageExt.Core" Version="4.4.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Safa.Domain\Safa.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
