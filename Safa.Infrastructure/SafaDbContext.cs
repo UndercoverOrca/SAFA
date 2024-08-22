@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Safa.Domain;
+using Safa.Infrastructure.Transactions;
 
 namespace Safa.Infrastructure;
 
@@ -12,7 +13,7 @@ public class SafaDbContext : IdentityDbContext<UserEntity, IdentityRole<Guid>, G
     {
     }
     
-    public virtual DbSet<Transaction> Transactions { get; set; }
+    public virtual DbSet<TransactionEntity> Transactions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

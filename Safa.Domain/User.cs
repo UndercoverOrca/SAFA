@@ -1,6 +1,6 @@
 ﻿namespace Safa.Domain;
 
-public record User(
+public class User(
     Guid Guid,
     string FullName,
     MoneyDistribution MoneyDistribution,
