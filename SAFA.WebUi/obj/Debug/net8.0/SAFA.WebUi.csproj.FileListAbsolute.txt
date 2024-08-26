@@ -10,7 +10,6 @@ C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\Safa.Infra
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\appsettings.json
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\Safa.WebUi.staticwebassets.runtime.json
-C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\app.db
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\Safa.WebUi.exe
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\Safa.WebUi.deps.json
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\Safa.WebUi.runtimeconfig.json

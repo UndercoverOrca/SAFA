@@ -21,36 +21,20 @@ public class TransactionRepository : ITransactionRepository
 
         var transactions = await this.context.Transactions
             // .Where(x => x.UserId == ) // TODO: implement when current user ID is availabe
-            .Select(x => new Transaction
-            {
-                Id = x.Id,
-                Date = x.TransactionDate,
-                Description = x.Description,
-                Type = x.TypeOfTransaction,
-                UserId = x.UserEntityId,
-                IsSpendingMoney = x.IsSpendingMoney
-            })
+            .Select(x => TransactionFactory.Convert(x))
             .ToListAsync();
         
         return transactions;
     }
 
-    public async Task<Transaction> GetBy(Guid transactionId)
+    public async Task<Option<Transaction>> GetBy(Guid transactionId)
     {
         await using var dbContext = this.context;
 
-        var transaction = await this.context.Transactions
+        var transaction = this.context.Transactions
             // .Where(x => x.UserId == ) // TODO: implement when current user ID is availabe
-            .FindAsync(transactionId)
-            .Select(x => new Transaction
-            {
-                Id = x.Id,
-                Date = x.TransactionDate,
-                Description = x.Description,
-                Type = x.TypeOfTransaction,
-                UserId = x.UserEntityId,
-                IsSpendingMoney = x.IsSpendingMoney
-            });
+            .FirstOrNone()
+            .Select(TransactionFactory.Convert);
 
         return transaction;
     }

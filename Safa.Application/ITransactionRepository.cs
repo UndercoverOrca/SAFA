@@ -1,4 +1,5 @@
-﻿using Safa.Domain;
+﻿using LanguageExt;
+using Safa.Domain;
 
 namespace Safa.Application;
 
@@ -6,5 +7,5 @@ public interface ITransactionRepository
 {
     Task<IReadOnlyList<Transaction>> GetAll();
 
-    Task<Transaction> GetBy(Guid transactionId);
+    Task<Option<Transaction>> GetBy(Guid transactionId);
 }
