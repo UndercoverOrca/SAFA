@@ -38,4 +38,14 @@ public class TransactionRepository : ITransactionRepository
 
         return transaction;
     }
+
+    public async Task Create(Transaction transaction)
+    {
+        await using var dbContext = this.context;
+
+        var transactionEntity = TransactionFactory.Convert(transaction);
+
+        await dbContext.Transactions.AddAsync(transactionEntity);
+        await dbContext.SaveChangesAsync();
+    }
 }
