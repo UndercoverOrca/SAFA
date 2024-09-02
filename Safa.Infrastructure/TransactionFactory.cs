@@ -1,4 +1,5 @@
-﻿using Safa.Domain;
+﻿using LanguageExt;
+using Safa.Domain;
 using Safa.Infrastructure.Transactions;
 
 namespace Safa.Infrastructure;
@@ -14,16 +15,17 @@ public static class TransactionFactory
             entity.Amount,
             entity.IsSpendingMoney);
 
-    public static TransactionEntity Convert(Transaction entity)
+    public static TransactionEntity Convert(Transaction entity, Guid userId)
     {
         return new TransactionEntity
         {
-            Id = entity.Id,
+            Id = entity.Id.IsDefault() ? Guid.NewGuid() : entity.Id,
             TransactionDate = entity.Date,
             Description = entity.Description,
             TypeOfTransaction = entity.Type,
             Amount = entity.Amount,
-            IsSpendingMoney = entity.IsSpendingMoney
+            IsSpendingMoney = entity.IsSpendingMoney,
+            UserEntityId = userId
         };
     }
 }
