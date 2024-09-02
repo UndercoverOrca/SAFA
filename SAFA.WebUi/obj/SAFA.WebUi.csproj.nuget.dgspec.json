@@ -4,14 +4,82 @@
     "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\Safa.WebUi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\Safa.WebUi.csproj": {
+    "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Application\\Safa.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\Safa.WebUi.csproj",
-        "projectName": "Safa.WebUi",
-        "projectPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\Safa.WebUi.csproj",
+        "projectUniqueName": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Application\\Safa.Application.csproj",
+        "projectName": "Safa.Application",
+        "projectPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Application\\Safa.Application.csproj",
         "packagesPath": "C:\\Users\\tvdnol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\obj\\",
+        "outputPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\tvdnol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Domain\\Safa.Domain.csproj": {
+                "projectPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Domain\\Safa.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "LanguageExt.Core": {
+              "target": "Package",
+              "version": "[4.4.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Domain\\Safa.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Domain\\Safa.Domain.csproj",
+        "projectName": "Safa.Domain",
+        "projectPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Domain\\Safa.Domain.csproj",
+        "packagesPath": "C:\\Users\\tvdnol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -42,7 +110,160 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Infrastructure\\Safa.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Infrastructure\\Safa.Infrastructure.csproj",
+        "projectName": "Safa.Infrastructure",
+        "projectPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Infrastructure\\Safa.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\tvdnol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\tvdnol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Application\\Safa.Application.csproj": {
+                "projectPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Application\\Safa.Application.csproj"
+              },
+              "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Domain\\Safa.Domain.csproj": {
+                "projectPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Domain\\Safa.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
+            "LanguageExt.Core": {
+              "target": "Package",
+              "version": "[4.4.9, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\Safa.WebUi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\Safa.WebUi.csproj",
+        "projectName": "Safa.WebUi",
+        "projectPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\Safa.WebUi.csproj",
+        "packagesPath": "C:\\Users\\tvdnol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.WebUi\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\tvdnol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Infrastructure\\Safa.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\tvdnol\\source\\repos\\Private\\SAFA\\Safa.Infrastructure\\Safa.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.8, )"
@@ -55,6 +276,10 @@
               "target": "Package",
               "version": "[8.0.8, )"
             },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[8.0.8, )"
@@ -62,6 +287,10 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.4, )"
             }
           },
           "imports": [
