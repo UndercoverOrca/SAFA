@@ -1,5 +1,4 @@
-﻿using LanguageExt.UnsafeValueAccess;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Safa.Application;
 using Safa.Domain;
 
@@ -18,18 +17,19 @@ public class CashbookController : Controller
         this.transactionRepository = transactionRepository;
         this.httpContextAccessor = httpContextAccessor;
     }
-
+    
     [HttpGet("")]
     public async Task<IActionResult> Index()
     {
-        var userId = this.httpContextAccessor.HttpContext!.User.GetId();
+        // var userId = this.httpContextAccessor.HttpContext!.User.GetId();
+        var userId = new Guid("B26AEE2D-086D-4D5E-9B11-3636922B7966");
+        
+        // if (userId.IsNone)
+        // {
+        //     return View(new List<Transaction>());
+        // }
 
-        if (userId.IsNone)
-        {
-            return View();
-        }
-
-        var transactions = await this.transactionRepository.GetAll(userId.ValueUnsafe());
+        var transactions = await this.transactionRepository.GetAll(userId);
         return View(transactions);
     }
     
@@ -43,11 +43,12 @@ public class CashbookController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Transaction transaction)
     {
-        var userId = this.httpContextAccessor.HttpContext!.User.GetId();
+        // var userId = this.httpContextAccessor.HttpContext!.User.GetId();
+        var userId = new Guid("B26AEE2D-086D-4D5E-9B11-3636922B7966");
         
-        if (this.ModelState.IsValid || userId.IsNone)
+        if (this.ModelState.IsValid)
         {
-            await this.transactionRepository.Create(transaction, userId.ValueUnsafe());
+            await this.transactionRepository.Create(transaction, userId);
             return RedirectToAction("Index");
         }
         

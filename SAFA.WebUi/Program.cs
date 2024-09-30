@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Safa.Application;
 using Safa.Infrastructure;
@@ -51,7 +50,7 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-// app.UseAuthentication();
+app.UseAuthentication();
 
 app.UseRouting();
 
@@ -60,6 +59,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
 app.Run();
