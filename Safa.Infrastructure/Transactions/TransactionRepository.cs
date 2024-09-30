@@ -21,7 +21,7 @@ public class TransactionRepository : ITransactionRepository
         using var dbContext = this.context;
 
         var transactions = await this.context.Transactions
-            .Where(x => x.UserEntityId == userId)
+            // .Where(x => x.UserEntityId == userId)
             .Select(x => TransactionFactory.Convert(x))
             .ToListAsync();
         
