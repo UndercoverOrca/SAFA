@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Safa.Application;
 using Safa.Infrastructure;
+using Safa.Infrastructure.Transactions;
 using Safa.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,9 @@ builder.Services.AddDefaultIdentity<UserEntity>(options => options.SignIn.Requir
     .AddEntityFrameworkStores<SafaDbContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+
 
 builder.Services
     .AddAuthentication(options =>

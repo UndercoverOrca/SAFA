@@ -1,5 +1,6 @@
 ﻿using LanguageExt;
 using LanguageExt.Common;
+using LanguageExt.UnsafeValueAccess;
 using Microsoft.EntityFrameworkCore;
 using Safa.Application;
 using Safa.Domain;
@@ -21,7 +22,7 @@ public class TransactionRepository : ITransactionRepository
         using var dbContext = this.context;
 
         var transactions = await this.context.Transactions
-            // .Where(x => x.UserEntityId == userId)
+            .Where(x => x.UserEntityId == userId.ValueUnsafe())
             .Select(x => TransactionFactory.Convert(x))
             .ToListAsync();
         

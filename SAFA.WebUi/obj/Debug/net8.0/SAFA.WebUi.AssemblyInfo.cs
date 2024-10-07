@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Safa.WebUi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe93a16941dbdc257df7214ca6073ca166b00b61")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1aae6b4f10901a6d41cc53835f3c248576fda0c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Safa.WebUi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Safa.WebUi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

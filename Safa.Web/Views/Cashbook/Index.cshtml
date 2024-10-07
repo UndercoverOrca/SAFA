@@ -1,4 +1,5 @@
-﻿@model IReadOnlyList<Safa.Domain.Transaction>
+﻿@using Safa.Domain
+@model IReadOnlyList<Safa.Domain.Transaction>
 
 @* @{ *@
 @*     ViewData["Title"] = "Index"; *@
@@ -98,9 +99,17 @@
                         <td>@transaction.Date</td>
                         <td>@transaction.Description</td>
                         <td>@transaction.Type</td>
-                        <td>@transaction.Amount</td>
-                        <td>@transaction.Amount</td>
-                        <td>@transaction.IsSpendingMoney</td>
+                        @if (transaction.Type == TypeOfTransaction.Income)
+                        {
+                            <td>€ @transaction.Amount</td>
+                            <td></td>
+                        }
+                        @if (transaction.Type == TypeOfTransaction.Expense)
+                        {
+                            <td></td>
+                            <td>€ @transaction.Amount</td>
+                            <td>@transaction.IsSpendingMoney</td>
+                        }
                     </tr>
                 }
                 </tbody>
