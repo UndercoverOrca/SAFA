@@ -29,7 +29,7 @@ namespace Safa.Infrastructure.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -160,13 +160,13 @@ namespace Safa.Infrastructure.Migrations
                 name: "Transactions",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TransactionDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(250)", nullable: false),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    TransactionDate = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
                     TypeOfTransaction = table.Column<int>(type: "INTEGER", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(7,2)", nullable: false),
+                    Amount = table.Column<decimal>(type: "TEXT", nullable: false),
                     IsSpendingMoney = table.Column<bool>(type: "INTEGER", nullable: false),
-                    UserEntityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    UserEntityId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

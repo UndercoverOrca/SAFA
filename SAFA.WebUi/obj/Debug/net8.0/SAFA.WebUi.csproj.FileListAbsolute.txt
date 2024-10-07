@@ -102,7 +102,6 @@ C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\System.Ref
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\System.Runtime.Caching.dll
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\System.Security.Permissions.dll
-C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\System.Windows.Extensions.dll
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\af\Humanizer.resources.dll
 C:\Users\tvdnol\source\repos\Private\SAFA\Safa.WebUi\bin\Debug\net8.0\ar\Humanizer.resources.dll

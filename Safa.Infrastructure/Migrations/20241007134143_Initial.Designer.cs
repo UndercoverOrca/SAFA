@@ -11,7 +11,7 @@ using Safa.Infrastructure;
 namespace Safa.Infrastructure.Migrations
 {
     [DbContext(typeof(SafaDbContext))]
-    [Migration("20240826131432_Initial")]
+    [Migration("20241007134143_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
