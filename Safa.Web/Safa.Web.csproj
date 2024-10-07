@@ -26,4 +26,8 @@
       <ProjectReference Include="..\Safa.Infrastructure\Safa.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <AdditionalFiles Include="Views\Cashbook\Create.cshtml" />
+    </ItemGroup>
+
 </Project>
