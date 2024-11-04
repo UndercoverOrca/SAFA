@@ -26,8 +26,12 @@ public class CashbookController : Controller
     {
         var userId = this.httpContextAccessor.HttpContext!.User.GetId();
 
+        var x =
+            from beep in await this.transactionRepository.GetAll(userId)
+                from baap in await this.transactionRepository.()
+
         return userId.IsSome
-            ? View(await transactionRepository.GetAll(userId))
+            ? View(await this.transactionRepository.GetAll(userId))
             : View(new List<Transaction>());
     }
     

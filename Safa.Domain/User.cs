@@ -3,6 +3,6 @@
 public class User(
     Guid Guid,
     string FullName,
-    MoneyDistribution MoneyDistribution,
+    UserMoneyDistribution userMoneyDistribution,
     List<Transaction> Transactions
 );
