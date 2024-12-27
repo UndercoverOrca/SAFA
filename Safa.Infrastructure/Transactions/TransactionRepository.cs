@@ -1,5 +1,4 @@
 ﻿using LanguageExt;
-using LanguageExt.Common;
 using LanguageExt.UnsafeValueAccess;
 using Microsoft.EntityFrameworkCore;
 using Safa.Application;
@@ -16,25 +15,27 @@ public class TransactionRepository : ITransactionRepository
         this.context = context;
     }
 
-    // TODO: implement Aff & Option
     public async Task<IReadOnlyList<Transaction>> GetAll(Option<Guid> userId)
     {
-        using var dbContext = this.context;
+        await using var dbContext = this.context;
 
         var transactions = await this.context.Transactions
             .Where(x => x.UserEntityId == userId.ValueUnsafe())
             .Select(x => TransactionFactory.Convert(x))
             .ToListAsync();
         
-        return transactions;
+        return transactions
+            .OrderBy(x => x.Date)
+            .ToList();
     }
 
-    public async Task<Option<Transaction>> GetBy(Guid transactionId)
+    public async Task<Option<Transaction>> GetBy(Guid transactionId, Option<Guid> userId)
     {
         await using var dbContext = this.context;
 
         var transaction = this.context.Transactions
             .Where(x => x.Id == transactionId)
+            .Where(x => x.UserEntityId == userId.ValueUnsafe())
             .FirstOrNone()
             .Select(TransactionFactory.Convert);
 
@@ -48,6 +49,16 @@ public class TransactionRepository : ITransactionRepository
         var transactionEntity = TransactionFactory.Convert(transaction, userId);
 
         await dbContext.Transactions.AddAsync(transactionEntity);
+        await dbContext.SaveChangesAsync();
+    }
+
+    public async Task Update(Transaction transaction, Guid userId)
+    {
+        await using var dbContext = this.context;
+        
+        var transactionEntity = TransactionFactory.Convert(transaction, userId);
+
+        dbContext.Transactions.Update(transactionEntity);
         await dbContext.SaveChangesAsync();
     }
 }

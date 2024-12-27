@@ -1,5 +1,5 @@
 ﻿@using Safa.Domain
-@model IReadOnlyList<Safa.Domain.Transaction>
+@model CashbookViewModel
 
 @* @{ *@
 @*     ViewData["Title"] = "Index"; *@
@@ -16,7 +16,7 @@
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Total income
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">€40,000</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">€@Model.TotalIncome.ToString("N2")</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
@@ -35,7 +35,7 @@
                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Total expenses
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">€215,000</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">€@Model.TotalExpenses.ToString("N2")</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
@@ -52,19 +52,19 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            Remaning spending money
+                            Remaining spending money
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">€50</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">€@Model.RemainingSpendingMoney.ToString("N2")</div>
                             </div>
                             <div class="col">
-                                <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar"
-                                         style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                         aria-valuemax="100">
-                                    </div>
-                                </div>
+                                @* <div class="progress progress-sm mr-2"> *@
+                                @*     <div class="progress-bar bg-info" role="progressbar" *@
+                                @*          style="width: 50%" aria-valuenow="50" aria-valuemin="0" *@
+                                @*          aria-valuemax="100"> *@
+                                @*     </div> *@
+                                @* </div> *@
                             </div>
                         </div>
                     </div>
@@ -90,10 +90,11 @@
                     <th>Income</th>
                     <th>Expense</th>
                     <th>Spending money</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach (var transaction in Model)
+                @foreach (var transaction in Model.Transactions)
                 {
                     <tr>
                         <td>@transaction.Date</td>
@@ -103,6 +104,7 @@
                         {
                             <td>€ @transaction.Amount</td>
                             <td></td>
+                            <td></td>
                         }
                         @if (transaction.Type == TypeOfTransaction.Expense)
                         {
@@ -110,6 +112,14 @@
                             <td>€ @transaction.Amount</td>
                             <td>@transaction.IsSpendingMoney</td>
                         }
+
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Cashbook" asp-action="Edit" asp-route-id="@transaction.Id">
+                                    <i class="bi bi-pencil-square"> </i> Edit
+                                </a>
+                            </div>
+                        </td>
                     </tr>
                 }
                 </tbody>

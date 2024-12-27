@@ -1,36 +1,6 @@
 @using Safa.Domain
 @model Safa.Domain.Transaction
 
-@* <form method="post"> *@
-@*     <div class="border p-3 mt-4"> *@
-@*         <div class="row pb-2"> *@
-@*             <h2 class="text-primary">Create sombrero</h2> *@
-@*             <hr/> *@
-@*         </div> *@
-@*         <div class="mb-3"> *@
-@*             <label asp-for="Date"></label> *@
-@*             <input asp-for="Date"></input> *@
-@*         </div> *@
-@*         <div class="mb-3"> *@
-@*             <label asp-for="Description"></label> *@
-@*             <Input asp-for="Description"></Input> *@
-@*         </div> *@
-@*         <div class="mb-3"> *@
-@*             <label asp-for="Type"></label> *@
-@*             <Input asp-for="Type"></Input> *@
-@*         </div> *@
-@*         <div class="mb-3"> *@
-@*             <label asp-for="Amount"></label> *@
-@*             <Input asp-for="Amount"></Input> *@
-@*         </div> *@
-@*         <div class="mb-3"> *@
-@*             <label asp-for="IsSpendingMoney"></label> *@
-@*             <Input asp-for="IsSpendingMoney"></Input> *@
-@*         </div> *@
-@*     </div> *@
-@* </form> *@
-
-
 <form class="border p-3 mt-4" method="post">
     
     <div class="input-group mb-3 w-25">
@@ -63,6 +33,6 @@
     </div>
     
     <a asp-controller="Cashbook" asp-action="Index" class="btn btn-secondary">back to overview</a>
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary">Update</button>
 
 </form>
