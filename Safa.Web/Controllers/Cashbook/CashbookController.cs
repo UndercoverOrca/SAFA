@@ -86,7 +86,7 @@ public class CashbookController : Controller
             () => RedirectToAction("Index"));
     }
     
-    [HttpPost("Edit")]
+    [HttpPost("Edit/{id}")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(Transaction transaction)
     {
