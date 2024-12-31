@@ -12,4 +12,6 @@ public interface ITransactionRepository
     Task Create(Transaction transaction, Guid userId);
     
     Task Update(Transaction transaction, Guid userId);
+    
+    Task Delete(Transaction transaction, Guid userId);
 }

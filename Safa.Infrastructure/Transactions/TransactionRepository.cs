@@ -61,4 +61,14 @@ public class TransactionRepository : ITransactionRepository
         dbContext.Transactions.Update(transactionEntity);
         await dbContext.SaveChangesAsync();
     }
+
+    public async Task Delete(Transaction transaction, Guid userId)
+    {
+        await using var dbContext = this.context;
+        
+        var transactionEntity = TransactionFactory.Convert(transaction, userId);
+
+        dbContext.Transactions.Remove(transactionEntity);
+        await dbContext.SaveChangesAsync();
+    }
 }

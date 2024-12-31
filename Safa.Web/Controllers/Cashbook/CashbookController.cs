@@ -100,4 +100,33 @@ public class CashbookController : Controller
         
         return View(transaction);
     }
+    
+    [HttpGet("delete/{id}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var userId = this.httpContextAccessor.HttpContext!.User.GetId();
+        if (userId.IsNone)
+        {
+            return RedirectToAction("Index");
+        }
+
+        var transaction = await this.transactionRepository.GetBy(id, userId.ValueUnsafe());
+        return transaction.Match<IActionResult>(
+            View,
+            () => RedirectToAction("Index"));
+    }
+    
+    [HttpPost("delete/{id}")]
+    public async Task<IActionResult> Delete(Transaction transaction)
+    {
+        var userId = this.httpContextAccessor.HttpContext!.User.GetId();
+        
+        if (this.ModelState.IsValid && userId.IsSome)
+        {
+            await this.transactionRepository.Delete(transaction, userId.ValueUnsafe());
+            return RedirectToAction("Index");
+        }
+        
+        return View(transaction);
+    }
 }
