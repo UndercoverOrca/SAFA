@@ -40,12 +40,14 @@ public class CashbookController : Controller
         var totalExpenses = transactions
             .Where(x => x.Type == TypeOfTransaction.Expense)
             .Sum(x => x.Amount);
+
+        var remainingSpendingMoney = totalIncome - totalExpenses;
         
         var cashbookViewModel = new CashbookViewModel(
             transactions,
             totalIncome,
             totalExpenses,
-            totalIncome - totalExpenses);
+            remainingSpendingMoney);
         
         return View(cashbookViewModel);
     }

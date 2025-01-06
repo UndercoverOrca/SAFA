@@ -1,4 +1,5 @@
 ﻿using LanguageExt;
+using LanguageExt.UnsafeValueAccess;
 using Safa.Domain;
 using Safa.Infrastructure.Transactions;
 
@@ -24,7 +25,7 @@ public static class TransactionFactory
             Description = entity.Description,
             TypeOfTransaction = entity.Type,
             Amount = entity.Amount,
-            IsSpendingMoney = entity.IsSpendingMoney,
+            IsSpendingMoney = entity.IsSpendingMoney.ValueUnsafe(),
             UserEntityId = userId
         };
     }

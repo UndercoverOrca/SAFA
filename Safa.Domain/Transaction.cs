@@ -1,4 +1,6 @@
-﻿namespace Safa.Domain;
+﻿using LanguageExt;
+
+namespace Safa.Domain;
 
 public record Transaction(
     Guid Id,
@@ -6,4 +8,4 @@ public record Transaction(
     string Description,
     TypeOfTransaction Type,
     decimal Amount,
-    bool IsSpendingMoney);
+    Option<bool> IsSpendingMoney);
