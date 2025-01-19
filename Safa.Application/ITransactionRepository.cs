@@ -5,9 +5,13 @@ namespace Safa.Application;
 
 public interface ITransactionRepository
 {
-    Task<IReadOnlyList<Transaction>> GetAll(Option<Guid> userId);
+    Task<Option<IReadOnlyList<Transaction>>> GetAll(Option<Guid> userId);
 
-    Task<Option<Transaction>> GetBy(Guid transactionId);
+    Task<Option<TransactionRequest>> GetBy(Guid transactionId, Option<Guid> userId);
 
-    Task Create(Transaction transaction, Guid userId);
+    Task Create(TransactionRequest transaction, Guid userId);
+    
+    Task Update(TransactionRequest transaction, Guid userId);
+    
+    Task Delete(TransactionRequest transactionRequest, Guid userId);
 }

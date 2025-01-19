@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safa.Application", "Safa.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safa.Web", "Safa.Web\Safa.Web.csproj", "{833970CD-BB1B-4201-8729-2766B9454E18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safa.UnitTests", "Safa.UnitTests\Safa.UnitTests.csproj", "{1A648D6F-78BC-4B10-9E6D-4FFE5BCFCA71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{833970CD-BB1B-4201-8729-2766B9454E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{833970CD-BB1B-4201-8729-2766B9454E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{833970CD-BB1B-4201-8729-2766B9454E18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A648D6F-78BC-4B10-9E6D-4FFE5BCFCA71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A648D6F-78BC-4B10-9E6D-4FFE5BCFCA71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A648D6F-78BC-4B10-9E6D-4FFE5BCFCA71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A648D6F-78BC-4B10-9E6D-4FFE5BCFCA71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

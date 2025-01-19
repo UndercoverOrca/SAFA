@@ -1,5 +1,4 @@
 ﻿using LanguageExt;
-using LanguageExt.Common;
 using LanguageExt.UnsafeValueAccess;
 using Microsoft.EntityFrameworkCore;
 using Safa.Application;
@@ -16,38 +15,61 @@ public class TransactionRepository : ITransactionRepository
         this.context = context;
     }
 
-    // TODO: implement Aff & Option
-    public async Task<IReadOnlyList<Transaction>> GetAll(Option<Guid> userId)
+    public async Task<Option<IReadOnlyList<Transaction>>> GetAll(Option<Guid> userId)
     {
-        using var dbContext = this.context;
+        await using var dbContext = this.context;
 
         var transactions = await this.context.Transactions
             .Where(x => x.UserEntityId == userId.ValueUnsafe())
             .Select(x => TransactionFactory.Convert(x))
             .ToListAsync();
         
-        return transactions;
+        return transactions
+            .OrderBy(x => x.Date)
+            .ToList();
     }
 
-    public async Task<Option<Transaction>> GetBy(Guid transactionId)
+    public async Task<Option<TransactionRequest>> GetBy(Guid transactionId, Option<Guid> userId)
     {
         await using var dbContext = this.context;
 
         var transaction = this.context.Transactions
             .Where(x => x.Id == transactionId)
+            .Where(x => x.UserEntityId == userId.ValueUnsafe())
             .FirstOrNone()
-            .Select(TransactionFactory.Convert);
+            .Select(TransactionFactory.TryConvert);
 
         return transaction;
     }
 
-    public async Task Create(Transaction transaction, Guid userId)
+    public async Task Create(TransactionRequest transaction, Guid userId)
     {
         await using var dbContext = this.context;
 
-        var transactionEntity = TransactionFactory.Convert(transaction, userId);
+        var transactionEntity = TransactionFactory
+            .TryConvert(transaction, userId);
 
         await dbContext.Transactions.AddAsync(transactionEntity);
+        await dbContext.SaveChangesAsync();
+    }
+
+    public async Task Update(TransactionRequest transaction, Guid userId)
+    {
+        await using var dbContext = this.context;
+        
+        var transactionEntity = TransactionFactory.TryConvert(transaction, userId);
+
+        dbContext.Transactions.Update(transactionEntity);
+        await dbContext.SaveChangesAsync();
+    }
+
+    public async Task Delete(TransactionRequest transaction, Guid userId)
+    {
+        await using var dbContext = this.context;
+        
+        var transactionEntity = TransactionFactory.TryConvert(transaction, userId);
+
+        dbContext.Transactions.Remove(transactionEntity);
         await dbContext.SaveChangesAsync();
     }
 }

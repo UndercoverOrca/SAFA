@@ -1,7 +1,7 @@
 @using Safa.Domain
 @model Safa.Application.TransactionRequest
 
-<form class="border p-3 mt-4" method="post">
+<form class="border p-3 mt-4" method="post" asp-action="Edit">
     
     <div class="input-group mb-3 w-25">
         <input type="date" asp-for="Date" class="form-control" placeholder="Date" aria-label="Date">
@@ -33,6 +33,6 @@
     </div>
     
     <a asp-controller="Cashbook" asp-action="Index" class="btn btn-secondary">back to overview</a>
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary">Update</button>
 
 </form>

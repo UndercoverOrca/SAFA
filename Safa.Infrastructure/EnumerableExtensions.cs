@@ -1,4 +1,5 @@
 ﻿using LanguageExt;
+using static LanguageExt.Prelude;
 
 namespace Safa.Infrastructure;
 
@@ -8,7 +9,7 @@ public static class EnumerableExtensions
     {
         var value = source.FirstOrDefault();
         return value is null
-            ? Prelude.None
-            : Prelude.Some(value);
+            ? None
+            : Some(value);
     }
 }
