@@ -15,7 +15,7 @@ public class TransactionRepository : ITransactionRepository
         this.context = context;
     }
 
-    public async Task<IReadOnlyList<Transaction>> GetAll(Option<Guid> userId)
+    public async Task<Option<IReadOnlyList<Transaction>>> GetAll(Option<Guid> userId)
     {
         await using var dbContext = this.context;
 
@@ -29,7 +29,7 @@ public class TransactionRepository : ITransactionRepository
             .ToList();
     }
 
-    public async Task<Option<Transaction>> GetBy(Guid transactionId, Option<Guid> userId)
+    public async Task<Option<TransactionRequest>> GetBy(Guid transactionId, Option<Guid> userId)
     {
         await using var dbContext = this.context;
 
@@ -37,36 +37,37 @@ public class TransactionRepository : ITransactionRepository
             .Where(x => x.Id == transactionId)
             .Where(x => x.UserEntityId == userId.ValueUnsafe())
             .FirstOrNone()
-            .Select(TransactionFactory.Convert);
+            .Select(TransactionFactory.TryConvert);
 
         return transaction;
     }
 
-    public async Task Create(Transaction transaction, Guid userId)
+    public async Task Create(TransactionRequest transaction, Guid userId)
     {
         await using var dbContext = this.context;
 
-        var transactionEntity = TransactionFactory.Convert(transaction, userId);
+        var transactionEntity = TransactionFactory
+            .TryConvert(transaction, userId);
 
         await dbContext.Transactions.AddAsync(transactionEntity);
         await dbContext.SaveChangesAsync();
     }
 
-    public async Task Update(Transaction transaction, Guid userId)
+    public async Task Update(TransactionRequest transaction, Guid userId)
     {
         await using var dbContext = this.context;
         
-        var transactionEntity = TransactionFactory.Convert(transaction, userId);
+        var transactionEntity = TransactionFactory.TryConvert(transaction, userId);
 
         dbContext.Transactions.Update(transactionEntity);
         await dbContext.SaveChangesAsync();
     }
 
-    public async Task Delete(Transaction transaction, Guid userId)
+    public async Task Delete(TransactionRequest transaction, Guid userId)
     {
         await using var dbContext = this.context;
         
-        var transactionEntity = TransactionFactory.Convert(transaction, userId);
+        var transactionEntity = TransactionFactory.TryConvert(transaction, userId);
 
         dbContext.Transactions.Remove(transactionEntity);
         await dbContext.SaveChangesAsync();

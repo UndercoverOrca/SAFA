@@ -14,62 +14,60 @@ public class AccountSummaryTests
     public void CreateFromTransactions_WhenGivenValidDecimal_ReturnsValidRemainingSpendingMoney(decimal savingFraction, decimal expectedRemainingSpendingMoney)
     {
         // Arrange
+        var fraction = Fraction.TryCreate(savingFraction)
+            .Match(
+                fraction => fraction,
+                Fraction.Zero);
         var transactions = GetMockTransactionsList();
-        var spendingPreferences = new SavingPreferences(savingFraction);
+        var spendingPreferences = new SavingPreferences(fraction);
 
         // Act
         var result = AccountSummary.CreateFromTransactions(transactions, spendingPreferences);
 
         // Assert
-        result.RemainingSpendingMoney.ShouldBe(expectedRemainingSpendingMoney);
+        result.RemainingSpendingMoney.Value.ShouldBe(expectedRemainingSpendingMoney);
     }
 
-    [Fact]
-    public void CreateFromTransactions_WhenSavingFractionIsNull_()
+    private static IEnumerable<Transaction> GetMockTransactionsList()
     {
-        // Arrange
+        var totalIncome = Amount.TryCreate(1000m)
+            .Match(
+                amount => amount,
+                Amount.Zero);
 
+        var totalExpenses = Amount.TryCreate(500m)
+            .Match(
+                amount => amount,
+                Amount.Zero);
 
-        // Act
+        var totalSpentMoney = Amount.TryCreate(200m)
+            .Match(
+                amount => amount,
+                Amount.Zero);
 
-
-        // Assert
+        return new List<Transaction>
+        {
+            new(
+                Guid.NewGuid(),
+                new DateOnly(2015, 01, 01),
+                "Test income",
+                TypeOfTransaction.Income,
+                totalIncome,
+                None),
+            new(
+                Guid.NewGuid(),
+                new DateOnly(2015, 01, 02),
+                "Test expense",
+                TypeOfTransaction.Expense,
+                totalExpenses,
+                false),
+            new(
+                Guid.NewGuid(),
+                new DateOnly(2015, 01, 03),
+                "Test expense",
+                TypeOfTransaction.Expense,
+                totalSpentMoney,
+                true)
+        };
     }
-    
-    [Fact]
-    public void CreateFromTransactions_WhenSavingFractionIsNegative_()
-    {
-        // Arrange
-
-
-        // Act
-
-
-        // Assert
-    }
-
-    private static IEnumerable<Transaction> GetMockTransactionsList() =>
-    [
-        new(
-            Guid.NewGuid(),
-            new DateOnly(2015, 01, 01),
-            "Test income",
-            TypeOfTransaction.Income,
-            1000m,
-            None),
-        new(
-            Guid.NewGuid(),
-            new DateOnly(2015, 01, 02),
-            "Test expense",
-            TypeOfTransaction.Expense,
-            500m,
-            false),
-        new(
-            Guid.NewGuid(),
-            new DateOnly(2015, 01, 03),
-            "Test expense",
-            TypeOfTransaction.Expense,
-            200m,
-            true)
-    ];
 }

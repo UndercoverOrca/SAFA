@@ -28,26 +28,27 @@ public class CashbookController : Controller
         var userId = this.httpContextAccessor.HttpContext!.User.GetId();
         if (userId.IsNone)
         {
-            return View(new CashbookViewModel(new List<Transaction>(), 0, 0, 0));
+            return View(new CashbookViewModel(new List<Transaction>(), new AccountSummary(Amount.Zero, Amount.Zero, Amount.Zero)));
         }
 
-        var transactions = await transactionRepository.GetAll(userId);
+        var transactions = await transactionRepository
+            .GetAll(userId)
+            .Match(
+                x => x,
+                () => new List<Transaction>());
         
-        var totalIncome = transactions
-            .Where(x => x.Type == TypeOfTransaction.Income)
-            .Sum(x => x.Amount);
-        
-        var totalExpenses = transactions
-            .Where(x => x.Type == TypeOfTransaction.Expense)
-            .Sum(x => x.Amount);
+        //TODO: DELETE AFTER IMPLEMENTING ACCOUNT SUMMARY
+        var savingFraction = Fraction.TryCreate(0.75m)
+            .Match(
+                fraction => fraction,
+                Fraction.Zero);
+        var savingPreferences = new SavingPreferences(savingFraction);
 
-        var remainingSpendingMoney = totalIncome - totalExpenses;
+        var accountSummary = AccountSummary.CreateFromTransactions(transactions, savingPreferences);
         
         var cashbookViewModel = new CashbookViewModel(
             transactions,
-            totalIncome,
-            totalExpenses,
-            remainingSpendingMoney);
+            accountSummary);
         
         return View(cashbookViewModel);
     }
@@ -60,7 +61,7 @@ public class CashbookController : Controller
     
     [HttpPost("Create")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Transaction transaction)
+    public async Task<IActionResult> Create(TransactionRequest transaction)
     {
         var userId = this.httpContextAccessor.HttpContext!.User.GetId();
         
@@ -90,7 +91,7 @@ public class CashbookController : Controller
     
     [HttpPost("Edit/{id}")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Transaction transaction)
+    public async Task<IActionResult> Edit(TransactionRequest transaction)
     {
         var userId = this.httpContextAccessor.HttpContext!.User.GetId();
         
@@ -118,8 +119,9 @@ public class CashbookController : Controller
             () => RedirectToAction("Index"));
     }
     
+    // Change to Transaction instead of TransactionRequest? Might go hand-in-hand with using a service
     [HttpPost("delete/{id}")]
-    public async Task<IActionResult> Delete(Transaction transaction)
+    public async Task<IActionResult> Delete(TransactionRequest transaction)
     {
         var userId = this.httpContextAccessor.HttpContext!.User.GetId();
         

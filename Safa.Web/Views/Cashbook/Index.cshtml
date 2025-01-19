@@ -1,4 +1,5 @@
-﻿@using Safa.Domain
+﻿@using LanguageExt.UnsafeValueAccess
+@using Safa.Domain
 @model CashbookViewModel
 
 @* @{ *@
@@ -16,7 +17,7 @@
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Total income
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">€@Model.TotalIncome.ToString("N2")</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">€@Model.AccountSummary.TotalIncome.Value.ToString("N2")</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
@@ -35,7 +36,7 @@
                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Total expenses
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">€@Model.TotalExpenses.ToString("N2")</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">€@Model.AccountSummary.TotalExpenses.Value.ToString("N2")</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
@@ -56,7 +57,7 @@
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">€@Model.RemainingSpendingMoney.ToString("N2")</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">€@Model.AccountSummary.RemainingSpendingMoney.Value.ToString("N2")</div>
                             </div>
                             <div class="col">
                                 @* <div class="progress progress-sm mr-2"> *@
@@ -102,15 +103,15 @@
                         <td>@transaction.Type</td>
                         @if (transaction.Type == TypeOfTransaction.Income)
                         {
-                            <td>€ @transaction.Amount</td>
+                            <td>€ @transaction.Amount.Value.ToString("N2")</td>
                             <td></td>
                             <td></td>
                         }
                         @if (transaction.Type == TypeOfTransaction.Expense)
                         {
                             <td></td>
-                            <td>€ @transaction.Amount</td>
-                            <td>@transaction.IsSpendingMoney</td>
+                            <td>€ @transaction.Amount.Value.ToString("N2")</td>
+                            <td>@transaction.IsSpendingMoney.ValueUnsafe()</td>
                         }
 
                         <td>

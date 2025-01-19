@@ -1,9 +1,9 @@
 ﻿namespace Safa.Domain;
 
 public record AccountSummary(
-    decimal TotalIncome,
-    decimal TotalExpenses,
-    decimal RemainingSpendingMoney)
+    Amount TotalIncome,
+    Amount TotalExpenses,
+    Amount RemainingSpendingMoney)
 {
     public static AccountSummary CreateFromTransactions(IEnumerable<Transaction> transactions, SavingPreferences savingPreferences)
     {
@@ -13,16 +13,17 @@ public record AccountSummary(
 
         var savingFraction = savingPreferences.SavingFraction;
         
-        var totalIncome = groups.Find(TypeOfTransaction.Income).Match(x => x.Sum(t => t.Amount), 0m);
-        var totalExpenses = groups.Find(TypeOfTransaction.Expense).Match(x => x.Sum(t => t.Amount), 0m);
+        var totalIncome = groups.Find(TypeOfTransaction.Income).Match(x => x.Select(x => x.Amount).Sum(), Amount.Zero);
+        var totalExpenses = groups.Find(TypeOfTransaction.Expense).Match(x => x.Select(x => x.Amount).Sum(), Amount.Zero);
         
         var spentMoney = groups
             .Find(TypeOfTransaction.Expense)
             .Match(x => x
                 .Where(t => t.IsSpendingMoney.Match(s => s, false))
-                .Sum(t => t.Amount),
-                0m);
-
+                .Select(t => t.Amount)
+                .Sum(),
+                Amount.Zero);
+        
         var remainingSpendingMoney = CalculateSpendingMoney(totalIncome, spentMoney, savingFraction);
         
         return new AccountSummary(
@@ -31,6 +32,6 @@ public record AccountSummary(
             remainingSpendingMoney);
     }
     
-    private static decimal CalculateSpendingMoney(decimal totalIncome, decimal spentMoney, decimal savingFraction) =>
+    private static Amount CalculateSpendingMoney(Amount totalIncome, Amount spentMoney, Fraction savingFraction) =>
         totalIncome * savingFraction - spentMoney;
 }

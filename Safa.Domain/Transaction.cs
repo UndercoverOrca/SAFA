@@ -7,5 +7,5 @@ public record Transaction(
     DateOnly Date,
     string Description,
     TypeOfTransaction Type,
-    decimal Amount,
+    Amount Amount,
     Option<bool> IsSpendingMoney);

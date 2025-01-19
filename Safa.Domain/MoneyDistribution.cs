@@ -1,3 +1,3 @@
 ﻿namespace Safa.Domain;
 
-public record MoneyDistribution(int Spending, int Saving);
+public record MoneyDistribution(Amount Spending, Amount Saving);
