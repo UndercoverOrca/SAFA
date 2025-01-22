@@ -1,4 +1,6 @@
-﻿namespace Safa.Domain;
+﻿using Safa.Domain.Extensions;
+
+namespace Safa.Domain.Types;
 
 public record AccountSummary(
     Amount TotalIncome,

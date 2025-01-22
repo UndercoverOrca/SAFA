@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Safa.Application;
 using Safa.Infrastructure;
-using Safa.Infrastructure.Transactions;
+using Safa.Infrastructure.Entities;
 using Safa.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);

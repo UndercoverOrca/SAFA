@@ -2,7 +2,8 @@
 using LanguageExt.UnsafeValueAccess;
 using Safa.Application;
 using Safa.Domain;
-using Safa.Infrastructure.Transactions;
+using Safa.Domain.Types;
+using Safa.Infrastructure.Entities;
 
 namespace Safa.Infrastructure;
 

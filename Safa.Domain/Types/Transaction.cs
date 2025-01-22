@@ -1,6 +1,6 @@
 ﻿using LanguageExt;
 
-namespace Safa.Domain;
+namespace Safa.Domain.Types;
 
 public record Transaction(
     Guid Id,

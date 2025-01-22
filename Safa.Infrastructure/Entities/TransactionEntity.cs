@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Safa.Domain;
+using Safa.Domain.Types;
 
-namespace Safa.Infrastructure.Transactions;
+namespace Safa.Infrastructure.Entities;
 
 public class TransactionEntity
 {

@@ -1,8 +1,8 @@
-﻿namespace Safa.Domain;
+﻿namespace Safa.Domain.Types;
 
 public class User(
     Guid Guid,
     string FullName,
-    MoneyDistribution MoneyDistribution,
+    SavingPreferences savingPreferences,
     List<Transaction> Transactions
 );

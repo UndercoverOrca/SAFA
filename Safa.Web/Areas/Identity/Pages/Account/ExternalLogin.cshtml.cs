@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Safa.Infrastructure;
+using Safa.Infrastructure.Entities;
 
 namespace Safa.Web.Areas.Identity.Pages.Account
 {

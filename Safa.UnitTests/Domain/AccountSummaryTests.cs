@@ -1,4 +1,5 @@
 ﻿using Safa.Domain;
+using Safa.Domain.Types;
 using Shouldly;
 using static LanguageExt.Prelude;
 

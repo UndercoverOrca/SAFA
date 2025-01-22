@@ -1,4 +1,5 @@
 ﻿using Safa.Domain;
+using Safa.Domain.Types;
 
 namespace Safa.Web.Models;
 

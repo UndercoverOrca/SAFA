@@ -1,3 +1,3 @@
-﻿namespace Safa.Domain;
+﻿namespace Safa.Domain.Types;
 
 public record SavingPreferences(Fraction SavingFraction);

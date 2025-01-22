@@ -1,7 +1,7 @@
 ﻿using LanguageExt;
 using static LanguageExt.Prelude;
 
-namespace Safa.Infrastructure;
+namespace Safa.Domain.Extensions;
 
 public static class EnumerableExtensions
 {

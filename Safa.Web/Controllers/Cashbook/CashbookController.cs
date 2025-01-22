@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Safa.Application;
 using Safa.Domain;
+using Safa.Domain.Types;
 using Safa.Web.Models;
 
 namespace Safa.WebUi.Controllers.Cashbook;

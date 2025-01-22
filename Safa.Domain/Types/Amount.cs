@@ -1,7 +1,7 @@
 ﻿using LanguageExt;
 using static LanguageExt.Prelude;
 
-namespace Safa.Domain;
+namespace Safa.Domain.Types;
 
 public record Amount : IComparable<Amount>
 {

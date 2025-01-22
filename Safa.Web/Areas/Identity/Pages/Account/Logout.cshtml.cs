@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Safa.Infrastructure;
+using Safa.Infrastructure.Entities;
 using Safa.Web.Areas.Identity.Data.Safa;
 
 namespace Safa.Web.Areas.Identity.Pages.Account

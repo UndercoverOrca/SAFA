@@ -1,4 +1,6 @@
-﻿namespace Safa.Domain;
+﻿using Safa.Domain.Types;
+
+namespace Safa.Domain.Extensions;
 
 public static class IEnumerableExtensions
 {

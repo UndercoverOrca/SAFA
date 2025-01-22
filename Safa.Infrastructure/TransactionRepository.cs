@@ -2,9 +2,10 @@
 using LanguageExt.UnsafeValueAccess;
 using Microsoft.EntityFrameworkCore;
 using Safa.Application;
-using Safa.Domain;
+using Safa.Domain.Extensions;
+using Safa.Domain.Types;
 
-namespace Safa.Infrastructure.Transactions;
+namespace Safa.Infrastructure;
 
 public class TransactionRepository : ITransactionRepository
 {

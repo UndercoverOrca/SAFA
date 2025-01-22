@@ -1,4 +1,4 @@
-﻿namespace Safa.Domain;
+﻿namespace Safa.Domain.Types;
 
 public enum TypeOfTransaction
 {

@@ -1,8 +1,7 @@
 ﻿using LanguageExt;
-
 using static LanguageExt.Prelude;
 
-namespace Safa.Domain;
+namespace Safa.Domain.Extensions;
 
 public static class DictionaryExtensions
 {
