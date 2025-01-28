@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Safa.Infrastructure;
 
@@ -10,9 +11,11 @@ using Safa.Infrastructure;
 namespace Safa.Infrastructure.Migrations
 {
     [DbContext(typeof(SafaDbContext))]
-    partial class SafaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250128145647_AddUserPreferences")]
+    partial class AddUserPreferences
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
