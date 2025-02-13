@@ -1,5 +1,4 @@
 ﻿using LanguageExt;
-using Safa.Domain;
 using Safa.Domain.Types;
 
 namespace Safa.Application;

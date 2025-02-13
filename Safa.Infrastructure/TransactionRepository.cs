@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Safa.Application;
 using Safa.Domain.Extensions;
 using Safa.Domain.Types;
+using Safa.Infrastructure.Factories;
 
 namespace Safa.Infrastructure;
 

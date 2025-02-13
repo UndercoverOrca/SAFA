@@ -243,7 +243,7 @@ namespace Safa.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Safa.Infrastructure.Entities.UserPreferencesEntity", b =>
+            modelBuilder.Entity("Safa.Infrastructure.Entities.UserSettingsEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -252,9 +252,15 @@ namespace Safa.Infrastructure.Migrations
                     b.Property<decimal>("SavingFraction")
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid>("UserEntityId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
-                    b.ToTable("UserPreferences");
+                    b.HasIndex("UserEntityId")
+                        .IsUnique();
+
+                    b.ToTable("UserSettings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -319,9 +325,23 @@ namespace Safa.Infrastructure.Migrations
                     b.Navigation("UserEntity");
                 });
 
+            modelBuilder.Entity("Safa.Infrastructure.Entities.UserSettingsEntity", b =>
+                {
+                    b.HasOne("Safa.Infrastructure.Entities.UserEntity", "UserEntity")
+                        .WithOne("UserSettings")
+                        .HasForeignKey("Safa.Infrastructure.Entities.UserSettingsEntity", "UserEntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserEntity");
+                });
+
             modelBuilder.Entity("Safa.Infrastructure.Entities.UserEntity", b =>
                 {
                     b.Navigation("Transactions");
+
+                    b.Navigation("UserSettings")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

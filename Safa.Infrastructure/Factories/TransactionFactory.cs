@@ -1,11 +1,10 @@
 ﻿using LanguageExt;
 using LanguageExt.UnsafeValueAccess;
 using Safa.Application;
-using Safa.Domain;
 using Safa.Domain.Types;
 using Safa.Infrastructure.Entities;
 
-namespace Safa.Infrastructure;
+namespace Safa.Infrastructure.Factories;
 
 public static class TransactionFactory
 {

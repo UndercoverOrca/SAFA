@@ -31,4 +31,8 @@
       <AdditionalFiles Include="Views\Cashbook\Create.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Pages\Settings\SavingPreferences.cshtml" />
+    </ItemGroup>
+
 </Project>

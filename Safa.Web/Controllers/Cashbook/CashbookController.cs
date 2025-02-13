@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Safa.Application;
-using Safa.Domain;
 using Safa.Domain.Types;
 using Safa.Web.Models;
+using Safa.WebUi;
 
-namespace Safa.WebUi.Controllers.Cashbook;
+namespace Safa.Web.Controllers.Cashbook;
 
 [Authorize]
 [Route("cashbook")]
@@ -29,7 +29,12 @@ public class CashbookController : Controller
         var userId = this.httpContextAccessor.HttpContext!.User.GetId();
         if (userId.IsNone)
         {
-            return View(new CashbookViewModel(new List<Transaction>(), new AccountSummary(Amount.Zero, Amount.Zero, Amount.Zero)));
+            return View(new CashbookViewModel(
+                new List<Transaction>(),
+                new AccountSummary(
+                    Amount.Zero, 
+                    Amount.Zero, 
+                    Amount.Zero)));
         }
 
         var transactions = await transactionRepository

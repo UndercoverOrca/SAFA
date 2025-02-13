@@ -14,13 +14,19 @@ public class SafaDbContext : IdentityDbContext<UserEntity, IdentityRole<Guid>, G
     
     public virtual DbSet<TransactionEntity> Transactions { get; set; }
     
-    public virtual DbSet<UserPreferencesEntity> UserPreferences { get; set; }
+    public virtual DbSet<UserSettingsEntity> UserSettings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder
             .Entity<UserEntity>()
             .HasMany(x => x.Transactions)
+            .WithOne(x => x.UserEntity)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder
+            .Entity<UserEntity>()
+            .HasOne(x => x.UserSettings)
             .WithOne(x => x.UserEntity)
             .OnDelete(DeleteBehavior.Cascade);
         
